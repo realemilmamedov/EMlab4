@@ -46,7 +46,7 @@ func main() {
 		color.Red("Ошибка применения комиссии: %v", err)
 		os.Exit(1)
 	}
-	fmt.Printf("Итог после комиссии: %.2f RUB\n\n", finalAmount)
+	fmt.Printf("Итог: %.2f RUB\n\n", finalAmount)
 
 	// F3 отчёт
 	report, err := currencycalc.FormatCurrencyReport(pair, amount, finalAmount)

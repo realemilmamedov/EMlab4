@@ -1,4 +1,4 @@
-# EMlab4 — currencycalc (конвертация валют)
+# EMlab4 currencycalc (конвертация валют)
 
 Лабораторная работа №4, вариант 10. Пакет `currencycalc` реализует
 конвертацию валют, расчёт и применение комиссии, а также формирование
@@ -18,10 +18,10 @@ EMlab4/
 
 | Функция | Сигнатура | Роль |
 |---|---|---|
-| `Convert` | `func Convert(amount, rate float64) (float64, error)` | F1 — вычислительная функция: конвертация суммы по курсу |
-| `FeeAmount` | `func FeeAmount(amount, feePercent float64) (float64, error)` | вычисление размера комиссии |
-| `ApplyCommission` | `func ApplyCommission(amount *float64, fee float64) error` | F2 — функция с указателем: списывает комиссию из суммы "на месте" |
-| `FormatCurrencyReport` | `func FormatCurrencyReport(pair string, src, dst float64) (string, error)` | F3 — формирование строки отчёта через `fmt.Sprintf` |
+| `Convert` | `func Convert(amount, rate float64) (float64, error)` | F1 вычислительная функция: конвертация суммы по курсу |
+| `FeeAmount` | `func FeeAmount(amount, feePercent float64) (float64, error)` | Вычисление размера комиссии |
+| `ApplyCommission` | `func ApplyCommission(amount *float64, fee float64) error` | F2 функция с указателем: списывает комиссию из суммы "на месте" |
+| `FormatCurrencyReport` | `func FormatCurrencyReport(pair string, src, dst float64) (string, error)` | F3 формирование строки отчёта через `fmt.Sprintf` |
 
 Все экспортируемые функции:
 - названы в PascalCase;
@@ -32,11 +32,9 @@ EMlab4/
 
 Проект подключает два внешних пакета:
 
-1. **github.com/fatih/color** — цветной вывод в консоль (заголовки, ошибки,
-   успешные отчёты, предупреждения).
+1. **github.com/fatih/color** — цветной вывод в консоль.
 2. **github.com/google/uuid** — публичный пакет, генерирующий уникальный
-   идентификатор операции (`uuid.New()`), используемый как "чужой готовый
-   пакет" по требованиям задания.
+   идентификатор операции (`uuid.New()`).
 
 ## Установка зависимостей и запуск
 
@@ -48,14 +46,14 @@ go run ./cmd/app
 ## Пример вывода
 
 ```
-=== Лабораторная работа №4. Вариант 10: currencycalc ===
-ID операции: 5f2c1e2a-....
+=-=-= Лаб работа №4. Вариант 10 =-=-=
+ID операции: 95c547d5-96fd-4593-aa87-0b412e14eb26
 
 Конвертация:  1000.00 USD * 92.3500 =   92350.00 RUB
 Комиссия:     2.50% от   92350.00 RUB =    2308.75 RUB
 Итог после комиссии: 90041.25 RUB
 
-Отчёт: Операция [USD/RUB]:    1000.00  ->   90041.25
+Отчёт: Операция [USD/RUB]:    1000.00  ->    90041.25
 
 --- Проверка обработки ошибок ---
 Ожидаемая ошибка (отрицательная сумма): currencycalc.Convert: сумма не может быть отрицательной: -100.00
